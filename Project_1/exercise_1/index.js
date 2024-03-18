@@ -7,18 +7,6 @@ const localTodosContainer = document.getElementById(
 const localInputEle = document.getElementById('localText');
 const localAddTaskBtn = document.getElementById('local-storage-add-task-btn');
 
-const input1 = document.querySelector("input"),
-input = document.querySelector("input");
-input.innerHTML = localStorage.getItem("value");
-input.addEventListener("keyup", display);
-
-function display() {
-  localStorage.setItem("value", input1.value);
-  input1.innerHTML = localStorage.getItem("value")
-}
-
-
-
 const sessionTodoTasksArray = [];
 const sessionTodosContainer = document.getElementById(
   'session-storage-todos-container'
@@ -81,9 +69,6 @@ function save (){
 localAddTaskBtn.addEventListener('click', () => {
   const newTodoInfo = { checked: false, text: localInputEle.value };
   localTodoTasksArray.push(newTodoInfo);
-
-  localStorage.setItem("toDoList", JSON.stringify(localTodoTasksArray));
-
   const todoLiElements = createTodoLiElements(localTodoTasksArray, 'local');
   localTodosContainer.replaceChildren(...todoLiElements);
   localInputEle.value = '';
@@ -98,15 +83,3 @@ sessionAddTaskBtn.addEventListener('click', () => {
   sessionTodosContainer.replaceChildren(...todoLiElements);
   sessionInputEle.value = '';
 });
-
-console.log(localTodoTasksArray)
-function reDisplay() {
-  let array = "";
-  localTodoTasksArray.forEach(element => {
-    array += element;
-
-  });
-  localTodosContainer.innerHTML = array
-  console.log("hi")
-};
-// window.onload = reDisplay
