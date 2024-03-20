@@ -59,13 +59,13 @@ window.onload = function () {
     }
 
     cactus1Img = new Image();
-    cactus1Img.src = "./img/cac1.webp";
+    cactus1Img.src = "./img/cac1.png";
 
     cactus2Img = new Image();
-    cactus2Img.src = "./img/cac2.jpg";
+    cactus2Img.src = "./img/cac2.png";
 
     cactus3Img = new Image();
-    cactus3Img.src = "./img/cac3.jpg";
+    cactus3Img.src = "./img/cac3.png";
 
 
     requestAnimationFrame(update)
