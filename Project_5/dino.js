@@ -157,3 +157,28 @@ function detectCollisiom(a, b) {
         a.y < b.y + b.height && //a top left corner doesnt reach b bottom left corner
         a.y + a.height > b.y; // a bottom left corner passes b top left corner 
 }
+
+//local storage
+
+const input = document.querySelector("input");
+    h2 = document.querySelector("h2");
+    h2.innerHTMl = localStorage.getItem("value");
+
+input.addEventListener("keyup", display);
+
+
+function display(){
+    localStorage.setItem("value", input.value);
+    h2.innerHTMl = localStorage.getItem("value");
+}
+    
+
+
+
+
+
+
+
+
+
+
