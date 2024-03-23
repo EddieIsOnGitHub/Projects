@@ -16,12 +16,6 @@ const sessionAddTaskBtn = document.getElementById(
   'session-storage-add-task-btn'
 );
 
-let count = 0
-if (localTodoTasksArray.length > count) {
-    let x = createTodoLiElements(localTodoTasksArray, 'local');
-    localTodosContainer.replaceChildren(...x);
-}
-
 
 function createTodoLiElements(todoArray, sectionType) {
   // Return an array of <li> elements
@@ -62,9 +56,6 @@ function createTodoLiElements(todoArray, sectionType) {
   });
 };
 
-function save() {
-    localStorage.setItem('tasklist', JSON.stringify(localTodoTasksArray));
-};
 // Add a click event to the Local section's button:
 localAddTaskBtn.addEventListener('click', () => {
   const newTodoInfo = { checked: false, text: localInputEle.value };
