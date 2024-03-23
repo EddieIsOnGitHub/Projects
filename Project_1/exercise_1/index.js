@@ -1,9 +1,10 @@
+
 const localTodoTasksArray = localStorage.getItem('tasklist')? JSON.parse(localStorage.getItem('tasklist')) : [];
 const localTodosContainer = document.getElementById(
   'local-storage-todos-container'
 );
 const localInputEle = document.getElementById('local-storage-todo-input-ele');
-const localAddTaskBtn = document.getElementById('local-storage-add-task-btn');
+const localAddTaskBtn = document.getElementById("local-storage-add-task-btn");
 
 const sessionTodoTasksArray = [];
 const sessionTodosContainer = document.getElementById(
@@ -15,6 +16,12 @@ const sessionInputEle = document.getElementById(
 const sessionAddTaskBtn = document.getElementById(
   'session-storage-add-task-btn'
 );
+
+let count = 0
+if (localTodoTasksArray.length > count) {
+    let x = createTodoLiElements(localTodoTasksArray, 'local');
+    localTodosContainer.replaceChildren(...x);
+}
 
 
 function createTodoLiElements(todoArray, sectionType) {
@@ -54,8 +61,11 @@ function createTodoLiElements(todoArray, sectionType) {
     liElement.append(checkboxEle, labelEle); // Put <input> and <label> inside the <li>
     return liElement;
   });
-};
+}
 
+function save() {
+    localStorage.setItem('tasklist', JSON.stringify(localTodoTasksArray));
+}
 // Add a click event to the Local section's button:
 localAddTaskBtn.addEventListener('click', () => {
   const newTodoInfo = { checked: false, text: localInputEle.value };
@@ -74,4 +84,8 @@ sessionAddTaskBtn.addEventListener('click', () => {
   const todoLiElements = createTodoLiElements(sessionTodoTasksArray, 'session');
   sessionTodosContainer.replaceChildren(...todoLiElements);
   sessionInputEle.value = '';
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Your code here
 });
