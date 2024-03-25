@@ -1,6 +1,6 @@
 // board
 let board;
-let boardWidth = 750;
+let boardWidth = 1050;
 let boardHeight = 250;
 let context;
 
@@ -26,7 +26,7 @@ let cactus2Width = 69;
 let cactus3Width = 102;
 
 let cactusHeight = 70;
-let cactusX = 700;
+let cactusX = 1000;
 let cactusY = boardHeight - cactusHeight;
 
 let cactus1Img;
@@ -69,7 +69,7 @@ window.onload = function () {
 
 
     requestAnimationFrame(update)
-    setInterval(placeCactus, 1000)
+    setInterval(placeCactus, 500)
     document.addEventListener("keydown", moveDino);
 }
 function update() {
@@ -160,17 +160,17 @@ function detectCollisiom(a, b) {
 
 //local storage
 
-const input = document.querySelector("input");
-    h2 = document.querySelector("h2");
-    h2.innerHTMl = localStorage.getItem("value");
+// const input = document.querySelector("input");
+//     h2 = document.querySelector("h2");
+//     h2.innerHTMl = localStorage.getItem("value");
 
-input.addEventListener("keyup", display);
+// input.addEventListener("keyup", display);
 
 
-function display(){
-    localStorage.setItem("value", input.value);
-    h2.innerHTMl = localStorage.getItem("value");
-}
+// function display(){
+//     localStorage.setItem("value", input.value);
+//     h2.innerHTMl = localStorage.getItem("value");
+// }
     
 
 

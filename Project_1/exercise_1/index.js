@@ -1,10 +1,10 @@
-
+'use strict'
 const localTodoTasksArray = localStorage.getItem('tasklist')? JSON.parse(localStorage.getItem('tasklist')) : [];
 const localTodosContainer = document.getElementById(
   'local-storage-todos-container'
 );
 const localInputEle = document.getElementById('local-storage-todo-input-ele');
-const localAddTaskBtn = document.getElementById("local-storage-add-task-btn");
+const localAddTaskBtn = document.getElementById('local-storage-add-task-btn');
 
 const sessionTodoTasksArray = [];
 const sessionTodosContainer = document.getElementById(
@@ -17,8 +17,8 @@ const sessionAddTaskBtn = document.getElementById(
   'session-storage-add-task-btn'
 );
 
-let count = 0
-if (localTodoTasksArray.length > count) {
+
+if (localTodoTasksArray.length > 0) {
     let x = createTodoLiElements(localTodoTasksArray, 'local');
     localTodosContainer.replaceChildren(...x);
 }
@@ -54,11 +54,14 @@ function createTodoLiElements(todoArray, sectionType) {
     checkboxEle.addEventListener('click', (e) => {
       todoArray[e.target.getAttribute('id').split('-')[2]].checked =
         !todoArray[e.target.getAttribute('id').split('-')[2]].checked;
+        console.log(todoArray[e.target.getAttribute('id').split('-')[2]].checked =
+        !todoArray[e.target.getAttribute('id').split('-')[2]].checked)
       labelEle.classList.toggle('todo-task-done');
     });
 
     labelEle.textContent = i.text; // Add text to the <label> element
     liElement.append(checkboxEle, labelEle); // Put <input> and <label> inside the <li>
+    console.log(liElement)
     return liElement;
   });
 }
@@ -71,6 +74,7 @@ localAddTaskBtn.addEventListener('click', () => {
   const newTodoInfo = { checked: false, text: localInputEle.value };
   localTodoTasksArray.push(newTodoInfo);
   const todoLiElements = createTodoLiElements(localTodoTasksArray, 'local');
+  console.log(todoLiElements);
   localTodosContainer.replaceChildren(...todoLiElements);
   save();
   localInputEle.value = '';
@@ -84,8 +88,4 @@ sessionAddTaskBtn.addEventListener('click', () => {
   const todoLiElements = createTodoLiElements(sessionTodoTasksArray, 'session');
   sessionTodosContainer.replaceChildren(...todoLiElements);
   sessionInputEle.value = '';
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-  // Your code here
 });
